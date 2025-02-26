@@ -2,10 +2,15 @@ package com.ufc.ufc_predictor.fighter;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -101,6 +106,26 @@ public class FighterService {
       fighterRepository.deleteByFighterName(fighterName);
     } else {
       throw new RuntimeException("Fighter not found: " + fighterName);
+    }
+  }
+
+  public String predictWinner(String fighter1, String fighter2) {
+    // Call the FastAPI service running on port 5000
+    String pythonServiceUrl = "http://localhost:5000/predict";
+    RestTemplate restTemplate = new RestTemplate();
+
+    // Prepare the request body
+    Map<String, String> requestBody = new HashMap<>();
+    requestBody.put("fighter1", fighter1);
+    requestBody.put("fighter2", fighter2);
+
+    // Make the request
+    ResponseEntity<String> response = restTemplate.postForEntity(pythonServiceUrl, requestBody, String.class);
+
+    if (response.getStatusCode() == HttpStatus.OK) {
+      return response.getBody();
+    } else {
+      throw new RuntimeException("Failed to get prediction from Python service");
     }
   }
 

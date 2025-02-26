@@ -4,18 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "api/v1/fighter")
 public class FighterController {
   private final FighterService fighterService;
+  private final FighterRepository fighterRepository;
 
   @Autowired
-  public FighterController(FighterService fighterService) {
+  public FighterController(FighterService fighterService, FighterRepository fighterRepository) {
     this.fighterService = fighterService;
+      this.fighterRepository = fighterRepository;
   }
 
   @GetMapping
@@ -62,9 +67,4 @@ public class FighterController {
     fighterService.deleteFighter(fighterName);
     return new ResponseEntity<>("Fighter deleted successfully", HttpStatus.OK);
   }
-
-  @PostMapping("/predictor")
-  public ResponseEntity<Fighter> predictWinner(@RequestParam String fighter1, @RequestParam String fighter2) {}
-
-
 }
