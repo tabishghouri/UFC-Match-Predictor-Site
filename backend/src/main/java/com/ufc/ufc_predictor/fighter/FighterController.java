@@ -63,5 +63,8 @@ public class FighterController {
     return new ResponseEntity<>("Fighter deleted successfully", HttpStatus.OK);
   }
 
+  @PostMapping("/predictor")
+  public ResponseEntity<Fighter> predictWinner(@RequestParam String fighter1, @RequestParam String fighter2) {}
+
 
 }
