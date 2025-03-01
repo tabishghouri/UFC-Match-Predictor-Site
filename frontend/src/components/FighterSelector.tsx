@@ -26,32 +26,43 @@ const FighterSelector = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-3xl font-bold mb-4">UFC Match Predictor</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="Enter Fighter 1"
-          value={fighter1}
-          onChange={(e) => setFighter1(e.target.value)}
-          className="border border-gray-400 p-2 rounded-md"
-        />
-        <input
-          type="text"
-          placeholder="Enter Fighter 2"
-          value={fighter2}
-          onChange={(e) => setFighter2(e.target.value)}
-          className="border border-gray-400 p-2 rounded-md"
-        />
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-        >
+    <div className="container d-flex flex-column align-items-center justify-content-center vh-100">
+      <h1 className="text-center fw-bold mb-4">UFC Match Predictor</h1>
+
+      <form onSubmit={handleSubmit} className="w-50">
+        {/* Bootstrap Grid Row */}
+        <div className="row mb-3">
+          <div className="col">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter Fighter 1"
+              value={fighter1}
+              onChange={(e) => setFighter1(e.target.value)}
+            />
+          </div>
+          <div className="col">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Enter Fighter 2"
+              value={fighter2}
+              onChange={(e) => setFighter2(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <button type="submit" className="btn btn-primary w-100">
           Predict Winner
         </button>
       </form>
-      {winner && <h2 className="mt-4 text-green-500 text-xl">Winner: {winner}</h2>}
-      {error && <h2 className="mt-4 text-red-500 text-xl">{error}</h2>}
+
+      {winner && (
+        <h2 className="mt-4 text-success text-center">Winner: {winner}</h2>
+      )}
+      {error && (
+        <h2 className="mt-4 text-danger text-center">{error}</h2>
+      )}
     </div>
   );
 };
