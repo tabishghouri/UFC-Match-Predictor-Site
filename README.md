@@ -83,7 +83,8 @@ Install dependencies
 npm install
 ```
 Run the frontend
-```npm run dev
+```sh
+npm run dev
 ```
 The UI will be available at http://localhost:5173
 
