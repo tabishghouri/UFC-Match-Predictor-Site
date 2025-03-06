@@ -8,8 +8,9 @@ The **UFC Match Predictor** is a full-stack web application that predicts the wi
 - **Fight Outcome Prediction**: Built an ML model using scikit-learn by integrating data scraping and pandas to predict UFC fight winner based on stats and metrics
 - **Database**: Real-time data manipulation using SQL queries within a Postgres database  
 
-Check out the predictor code [here](https://github.com/tabishghouri/UFC-match-predictor)
-Check out the scraping code [here](https://github.com/tabishghouri/UFC-scraper)
+Check out the **predictor** code [here](https://github.com/tabishghouri/UFC-match-predictor)  
+
+Check out the **scraping** code [here](https://github.com/tabishghouri/UFC-scraper)
 
 ## **Tech Stack**
 ### **Backend (Spring Boot)**
