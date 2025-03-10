@@ -3,6 +3,15 @@
 ## **Overview**
 The **UFC Match Predictor** is a full-stack web application that predicts the winner between two UFC fighters based on historical data and machine learning models. This project is built using **Spring Boot**, **FastAPI**, **React (Vite + TypeScript)**, and **PostgreSQL**.
 
+## **Features**
+- **Data scraping**: Engineered a comprehensive data scraping of fighter stats from over 4000 fighters using python and pandas
+- **Fight Outcome Prediction**: Built an ML model using scikit-learn by integrating data scraping and pandas to predict UFC fight winner based on stats and metrics
+- **Database**: Real-time data manipulation using SQL queries within a Postgres database  
+
+Check out the **predictor** code [here](https://github.com/tabishghouri/UFC-match-predictor)  
+
+Check out the **scraping** code [here](https://github.com/tabishghouri/UFC-scraper)
+
 ## **Tech Stack**
 ### **Backend (Spring Boot)**
 - Java 17 + Spring Boot
