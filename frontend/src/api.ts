@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const FASTAPI_URL = "http://localhost:5000";
+const FASTAPI_URL = "http://127.0.0.1:8000";
 const SPRINGBOOT_URL = "http://localhost:8080";
 
 export const predictWinner = async (fighter1: string, fighter2: string) => {
