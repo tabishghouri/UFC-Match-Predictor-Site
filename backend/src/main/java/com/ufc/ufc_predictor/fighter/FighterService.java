@@ -77,13 +77,13 @@ public class FighterService {
       fighterToUpdate.setReachCm(updatedFighter.getReachCm());
       fighterToUpdate.setStance(updatedFighter.getStance());
       fighterToUpdate.setDateOfBirth(updatedFighter.getDateOfBirth());
-      fighterToUpdate.setFWins(updatedFighter.getFWins());
+      fighterToUpdate.setWins(updatedFighter.getWins());
       fighterToUpdate.setWinRate(updatedFighter.getWinRate());
-      fighterToUpdate.setFLosses(updatedFighter.getFLosses());
+      fighterToUpdate.setLosses(updatedFighter.getLosses());
       fighterToUpdate.setLossRate(updatedFighter.getLossRate());
-      fighterToUpdate.setFDraws(updatedFighter.getFDraws());
+      fighterToUpdate.setDraws(updatedFighter.getDraws());
       fighterToUpdate.setDrawRate(updatedFighter.getDrawRate());
-      fighterToUpdate.setFDcNc(updatedFighter.getFDcNc());
+      fighterToUpdate.setDcNc(updatedFighter.getDcNc());
       fighterToUpdate.setDcNcRate(updatedFighter.getDcNcRate());
       fighterToUpdate.setCareerSLpM(updatedFighter.getCareerSLpM());
       fighterToUpdate.setCareerStrAcc(updatedFighter.getCareerStrAcc());

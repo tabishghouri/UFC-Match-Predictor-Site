@@ -1,103 +1,105 @@
 package com.ufc.ufc_predictor.fighter;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name="fighter_statistic")
+@Table(name="fighter_statistics", schema = "public")
 public class Fighter {
+
   @Id
-  @Column(name = "fighter_name", nullable = false)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Long id;
+
+  @Column(name = "fighter_name")
   private String fighterName;
 
   @Column(name = "height_cm")
-  private Double heightCm; // Some values are missing (null-safe)
+  private Double heightCm;;
 
   @Column(name = "weight_pounds")
   private Double weightPounds;
 
   @Column(name = "reach_cm")
-  private Double reachCm; // Some values are missing (null-safe)
+  private Double reachCm;
 
   @Column(name = "stance")
   private String stance;
 
   @Column(name = "date_of_birth")
-  private LocalDate dateOfBirth; // Some values are NULL, handle accordingly
+  private LocalDate dateOfBirth;
 
   @Column(name = "f_wins")
-  private Integer fWins;
+  private Double wins;
 
   @Column(name = "win_rate")
   private Double winRate;
 
   @Column(name = "f_losses")
-  private Integer fLosses;
+  private Double losses;
 
   @Column(name = "loss_rate")
   private Double lossRate;
 
   @Column(name = "f_draws")
-  private Integer fDraws;
+  private Double draws;
 
   @Column(name = "draw_rate")
   private Double drawRate;
 
   @Column(name = "f_dc_nc")
-  private Integer fDcNc;
+  private Double dcNc;
 
   @Column(name = "dc_nc_rate")
   private Double dcNcRate;
 
-  @Column(name = "career_SLpM")
+  @Column(name = "career_slpm")
   private Double careerSLpM;
 
-  @Column(name = "career_StrAcc")
-  private Integer careerStrAcc; // Based on observed integer values in SQL
+  @Column(name = "career_stracc")
+  private Double careerStrAcc;
 
-  @Column(name = "career_SApM")
+  @Column(name = "career_sapm")
   private Double careerSApM;
 
-  @Column(name = "career_StrDef")
-  private Integer careerStrDef; // Based on observed integer values in SQL
+  @Column(name = "career_strdef")
+  private Double careerStrDef;
 
-  @Column(name = "career_TD_Avg")
+  @Column(name = "career_td_avg")
   private Double careerTDAvg;
 
-  @Column(name = "career_TD_Acc")
-  private Integer careerTDAcc; // Based on observed integer values in SQL
+  @Column(name = "career_td_acc")
+  private Double careerTDAcc;
 
-  @Column(name = "career_TD_Def")
-  private Integer careerTDDef; // Based on observed integer values in SQL
+  @Column(name = "career_td_def")
+  private Double careerTDDef;
 
-  @Column(name = "career_Sub_Avg")
+  @Column(name = "career_sub_avg")
   private Double careerSubAvg;
 
   public Fighter() {
   }
 
-  public Fighter(String fighterName, Double heightCm, Double weightPounds, Double reachCm, String stance,
-                 LocalDate dateOfBirth, Integer fWins, Double winRate, Integer fLosses, Double lossRate, Integer fDraws,
-                 Double drawRate, Integer fDcNc, Double dcNcRate, Double careerSLpM, Integer careerStrAcc,
-                 Double careerSApM, Integer careerStrDef, Double careerTDAvg, Integer careerTDAcc, Integer careerTDDef,
-                 Double careerSubAvg) {
+  public Fighter(String fighterName, Double heightCm, Double weightPounds, Double reachCm, String stance, LocalDate dateOfBirth, Double wins, Double winRate, Double losses, Double lossRate, Double draws, Double drawRate, Double dcNc, Double dcNcRate, Double careerSLpM, Double careerStrAcc, Double careerSApM, Double careerStrDef, Double careerTDAvg, Double careerTDAcc, Double careerTDDef, Double careerSubAvg) {
     this.fighterName = fighterName;
     this.heightCm = heightCm;
     this.weightPounds = weightPounds;
     this.reachCm = reachCm;
     this.stance = stance;
     this.dateOfBirth = dateOfBirth;
-    this.fWins = fWins;
+    this.wins = wins;
     this.winRate = winRate;
-    this.fLosses = fLosses;
+    this.losses = losses;
     this.lossRate = lossRate;
-    this.fDraws = fDraws;
+    this.draws = draws;
     this.drawRate = drawRate;
-    this.fDcNc = fDcNc;
+    this.dcNc = dcNc;
     this.dcNcRate = dcNcRate;
     this.careerSLpM = careerSLpM;
     this.careerStrAcc = careerStrAcc;
@@ -157,12 +159,12 @@ public class Fighter {
     this.dateOfBirth = dateOfBirth;
   }
 
-  public Integer getFWins() {
-    return fWins;
+  public Double getWins() {
+    return wins;
   }
 
-  public void setFWins(Integer fWins) {
-    this.fWins = fWins;
+  public void setWins(Double wins) {
+    this.wins = wins;
   }
 
   public Double getWinRate() {
@@ -173,12 +175,12 @@ public class Fighter {
     this.winRate = winRate;
   }
 
-  public Integer getFLosses() {
-    return fLosses;
+  public Double getLosses() {
+    return losses;
   }
 
-  public void setFLosses(Integer fLosses) {
-    this.fLosses = fLosses;
+  public void setLosses(Double losses) {
+    this.losses = losses;
   }
 
   public Double getLossRate() {
@@ -189,12 +191,12 @@ public class Fighter {
     this.lossRate = lossRate;
   }
 
-  public Integer getFDraws() {
-    return fDraws;
+  public Double getDraws() {
+    return draws;
   }
 
-  public void setFDraws(Integer fDraws) {
-    this.fDraws = fDraws;
+  public void setDraws(Double draws) {
+    this.draws = draws;
   }
 
   public Double getDrawRate() {
@@ -205,12 +207,12 @@ public class Fighter {
     this.drawRate = drawRate;
   }
 
-  public Integer getFDcNc() {
-    return fDcNc;
+  public Double getDcNc() {
+    return dcNc;
   }
 
-  public void setFDcNc(Integer fDcNc) {
-    this.fDcNc = fDcNc;
+  public void setDcNc(Double dcNc) {
+    this.dcNc = dcNc;
   }
 
   public Double getDcNcRate() {
@@ -229,11 +231,11 @@ public class Fighter {
     this.careerSLpM = careerSLpM;
   }
 
-  public Integer getCareerStrAcc() {
+  public Double getCareerStrAcc() {
     return careerStrAcc;
   }
 
-  public void setCareerStrAcc(Integer careerStrAcc) {
+  public void setCareerStrAcc(Double careerStrAcc) {
     this.careerStrAcc = careerStrAcc;
   }
 
@@ -245,11 +247,11 @@ public class Fighter {
     this.careerSApM = careerSApM;
   }
 
-  public Integer getCareerStrDef() {
+  public Double getCareerStrDef() {
     return careerStrDef;
   }
 
-  public void setCareerStrDef(Integer careerStrDef) {
+  public void setCareerStrDef(Double careerStrDef) {
     this.careerStrDef = careerStrDef;
   }
 
@@ -261,19 +263,19 @@ public class Fighter {
     this.careerTDAvg = careerTDAvg;
   }
 
-  public Integer getCareerTDAcc() {
+  public Double getCareerTDAcc() {
     return careerTDAcc;
   }
 
-  public void setCareerTDAcc(Integer careerTDAcc) {
+  public void setCareerTDAcc(Double careerTDAcc) {
     this.careerTDAcc = careerTDAcc;
   }
 
-  public Integer getCareerTDDef() {
+  public Double getCareerTDDef() {
     return careerTDDef;
   }
 
-  public void setCareerTDDef(Integer careerTDDef) {
+  public void setCareerTDDef(Double careerTDDef) {
     this.careerTDDef = careerTDDef;
   }
 
